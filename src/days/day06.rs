@@ -160,12 +160,12 @@ fn solve_part2(
 ) {
     let mut total = 0;
     for problem in &problems {
-        println!(
-            "{:?} {} = {}",
-            problem.numbers,
-            problem.operation,
-            problem.compute()
-        );
+        // println!(
+        //     "{:?} {} = {}",
+        //     problem.numbers,
+        //     problem.operation,
+        //     problem.compute()
+        // );
         total += problem.compute();
     }
     answers.add(DAY, crate::state::Puzzle::Part2, total as u64);

@@ -106,6 +106,7 @@ fn parse_input(input: &str) -> Steps {
 
 fn setup_day(input: Res<CurrentDayRaw>, mut commands: Commands) {
     commands.insert_resource(parse_input(&input.0));
+    commands.trigger(Compute::<DAY>);
 }
 
 fn cleanup_day(mut commands: Commands) {
@@ -128,7 +129,6 @@ fn solve_part1(
         }
     }
     answers.add(DAY, crate::state::Puzzle::Part1, zeros);
-    commands.trigger(Submit::Part1(zeros));
 }
 
 fn solve_part2(
@@ -170,9 +170,8 @@ fn solve_part2(
             }
         }
     }
-    info!("Part 2: Final position: {}", passed);
+    // info!("Part 2: Final position: {}", passed);
     answers.add(DAY, crate::state::Puzzle::Part2, passed);
-    commands.trigger(Submit::Part2(passed));
 }
 
 fn send_message_per_frame(mut message_writer: MessageWriter<Step>, mut steps: ResMut<Steps>) {
@@ -205,9 +204,11 @@ fn spawn_visuals(
             custom_size: Some(Vec2::splat(0.6 * size)),
             ..Default::default()
         },
+        DespawnOnExit(Day(DAY as u8)),
         Transform::from_rotation(Quat::from_rotation_z(PI)),
     ));
     commands.spawn((
+        DespawnOnExit(Day(DAY as u8)),
         Mesh2d(arrow),
         MeshMaterial2d(red),
         Arrow,

@@ -34,7 +34,6 @@ pub struct Position(IVec2);
 fn parse_input(input: &str, commands: &mut Commands) {
     let mut roles = HashSet::new();
     let mut size = IVec2::ZERO;
-    info!("Parsing input for Day 4: {}", input);
     for (y, line) in input.lines().enumerate() {
         for (x, ch) in line.char_indices() {
             if ch == '@' {

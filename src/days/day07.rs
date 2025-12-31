@@ -138,21 +138,21 @@ fn solve_part1(
         for x in 0..map.x() {
             let pos = IVec2::new(x, y);
             let Some(node) = map.get(&pos) else {
-                info!("{} not found in map", pos);
+                // info!("{} not found in map", pos);
                 continue;
             };
             let Ok(color) = nodes.get(*node) else {
-                info!("Node({:?}) not found in query", pos);
+                // info!("Node({:?}) not found in query", pos);
                 continue;
             };
             if color.0 == ACTIVE_COLOR {
                 let down = pos + IVec2::Y;
                 let Some(down_e) = map.get(&down) else {
-                    info!("Next Position not found in map");
+                    // info!("Next Position not found in map");
                     continue;
                 };
                 let Ok(mut next) = nodes.get_mut(*down_e) else {
-                    info!("Node({:?}) not found in query", down);
+                    // info!("Node({:?}) not found in query", down);
                     continue;
                 };
                 if next.0 == Color::WHITE {
@@ -162,11 +162,11 @@ fn solve_part1(
                     if down.x > 0 {
                         let left = down - IVec2::X;
                         let Some(left_e) = map.get(&left) else {
-                            info!("Next Position not found in map");
+                            // info!("Next Position not found in map");
                             continue;
                         };
                         let Ok(mut left_n) = nodes.get_mut(*left_e) else {
-                            info!("Node({:?}) not found in query", left);
+                            // info!("Node({:?}) not found in query", left);
                             continue;
                         };
                         if left_n.0 == Color::WHITE {
@@ -176,11 +176,11 @@ fn solve_part1(
                     if down.y > 0 {
                         let right = down + IVec2::X;
                         let Some(right_e) = map.get(&right) else {
-                            info!("Next Position not found in map");
+                            // info!("Next Position not found in map");
                             continue;
                         };
                         let Ok(mut right_n) = nodes.get_mut(*right_e) else {
-                            info!("Node({:?}) not found in query", right);
+                            // info!("Node({:?}) not found in query", right);
                             continue;
                         };
                         if right_n.0 == Color::WHITE {
@@ -195,7 +195,7 @@ fn solve_part1(
     let mut count = 0;
     for splitter in &splitter {
         let Ok(color) = nodes.get(splitter) else {
-            info!("Splitter Node not found in query");
+            // info!("Splitter Node not found in query");
             continue;
         };
         if color.0 == TRIGGERED {
@@ -249,10 +249,10 @@ fn solve_part2(
                     .or_insert(*count);
             }
         }
-        println!("Paths at y={}: {:?}", y, paths.len());
-        if y < 8 {
-            println!("{:#?}", paths);
-        }
+        // println!("Paths at y={}: {:?}", y, paths.len());
+        // if y < 8 {
+        //     println!("{:#?}", paths);
+        // }
         std::mem::swap(&mut paths, &mut next_paths);
     }
     answers.add(

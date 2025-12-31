@@ -86,7 +86,7 @@ fn solve_part1(
     mut answers: ResMut<Anwsers>,
 ) {
     let mut fresh_ing = 0;
-    info!("{:?}", fresh);
+    // info!("{:?}", fresh);
     for Ingredient(ing) in &query {
         if fresh.is_fresh(*ing) {
             fresh_ing += 1;
@@ -127,11 +127,11 @@ fn solve_part2(_: On<Compute<DAY>>, fresh: Res<FreshList>, mut answers: ResMut<A
         }
     }
 
-    info!(
-        "Fresh: {}\n dedup: {:?}",
-        fresh.list.len(),
-        dedup_fresh.len()
-    );
+    // info!(
+    //     "Fresh: {}\n dedup: {:?}",
+    //     fresh.list.len(),
+    //     dedup_fresh.len()
+    // );
     answers.add(DAY, crate::state::Puzzle::Part2, total_fresh as u64);
     // info!("Part 2: {}", total_fresh);
 }

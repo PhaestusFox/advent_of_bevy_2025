@@ -51,7 +51,7 @@ fn parse_input(input: &str, commands: &mut Commands) {
         commands.spawn((
             ChildOf(root),
             Product,
-            children![(ProductId(a), ProductId(b))],
+            children![ProductId(a), ProductId(b)],
         ));
     }
     commands.insert_resource(Products { ranges });

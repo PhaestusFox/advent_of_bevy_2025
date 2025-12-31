@@ -177,7 +177,13 @@ fn spawn_back_to_calendar(mut commands: Commands, assets: Res<AssetServer>) {
             BorderColor::all(Color::BLACK),
             Hovered::default(),
             EntityCursor::System(bevy::window::SystemCursorIcon::ContextMenu),
-            (DespawnOnEnter(Day(0)), Day(0), Button, TabIndex(0)),
+            (
+                DespawnOnEnter(Day(0)),
+                Day(0),
+                Button,
+                TabIndex(0),
+                GlobalZIndex(1),
+            ),
         ))
         .observe(
             |click: On<Pointer<Click>>, mut next: ResMut<NextState<Day>>| {
