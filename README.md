@@ -1,9 +1,9 @@
 A bevy of skin on top of Advent of Code.
 
 # To use
-Add advent_of_bevy_2025 to the project
-Add Bevy 0.17 to the project
-In fn main(), add AoBPlugin to an empty Bevy app
+Add advent_of_bevy_2025 to the project<br>
+Add Bevy 0.17 to the project<br>
+In fn main(), add AoBPlugin to an empty Bevy app<br>
 ```rust
 use bevy::prelude::*;
 
@@ -15,9 +15,9 @@ fn main() {
     app.run();
 }
 ```
-run add
-Put AoC puzzle input in Day*.input file
-attempt to solve puzzle using provided Types in advent_of_bevy::day*
-When the game is running, click a day to load the puzzle
-When the puzzle is solved, trigger Submit::Puzzle*(answer)
-will update calendar if correct
+run add<br>
+Put AoC puzzle input in Day*.input file<br>
+attempt to solve puzzle using provided Types in advent_of_bevy::day*<br>
+When the game is running, click a day to load the puzzle<br>
+When the puzzle is solved, trigger Submit::Puzzle*(answer)<br>
+will update calendar if correct<br>
