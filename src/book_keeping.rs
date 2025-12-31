@@ -91,7 +91,9 @@ pub(super) fn submit_answers(
     // mut pkv: ResMut<bevy_pkv::PkvStore>,
     day: Res<State<Day>>,
     mut state: ResMut<CalendarState>,
+    mut pkv: ResMut<bevy_pkv::PkvStore>,
 ) {
+    println!("Submitting answer for day {}", day.0);
     match &*submition {
         Submit::Part1(answer) => match answers.check(day.0 as usize, Puzzle::Part1, *answer) {
             Results::Missing => error!(
@@ -101,6 +103,7 @@ pub(super) fn submit_answers(
             Results::Correct => {
                 info!("Day {} Part 1 answer is correct!", day.0);
                 state.pass(day.0, Puzzle::Part1);
+                _ = pkv.set(PKVKeys::CalendarState25, &*state);
             }
             Results::Lower => info!(
                 "Day {} Part 1 answer is incorrect; the correct answer is lower.",
@@ -119,6 +122,7 @@ pub(super) fn submit_answers(
             Results::Correct => {
                 info!("Day {} Part 2 answer is correct!", day.0);
                 state.pass(day.0, Puzzle::Part2);
+                _ = pkv.set(PKVKeys::CalendarState25, &*state);
             }
             Results::Lower => info!(
                 "Day {} Part 2 answer is incorrect; the correct answer is lower.",
