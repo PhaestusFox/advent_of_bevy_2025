@@ -21,3 +21,8 @@ attempt to solve puzzle using provided Types in advent_of_bevy::day*<br>
 When the game is running, click a day to load the puzzle<br>
 When the puzzle is solved, trigger Submit::Puzzle*(answer)<br>
 will update calendar if correct<br>
+
+To run code only when the puzzle is loaded use run condition in_state
+```rust
+app.add_systems(Update, attempt_puzzle.run_if(in_state(Day(1))))
+```
